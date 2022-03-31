@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.26.1",
     "express": "^4.17.3",
     "nodemon": "^2.0.15"
   },
@@ -7,7 +8,6 @@
   "description": "Search up your favorite magic cards and discover synergies by following up with related searches",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
