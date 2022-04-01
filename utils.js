@@ -1,12 +1,17 @@
 module.exports = {
-  render: (data, template) => {},
+  render: (dataArray, componentFunc) => {
+    return dataArray.map(componentFunc).join('')
+  },
   queryAssembler: (formData) => {
     let searchTerm = ''
 
     if (formData.name) searchTerm += ` ${formData.name}`
-    if (formData.type) searchTerm += ` t:${formData.type}`
+    if (formData.type) {
+      const words = formData.type.split(' ')
+      words.forEach((word) => (searchTerm += ` t:${word}`))
+    }
     if (formData.text) {
-      const words = formData[key].split(' ')
+      const words = formData.text.split(' ')
       words.forEach((word) => (searchTerm += ` o:${word}`))
     }
     if (formData.set) searchTerm += ` e:${formData.set}`
@@ -19,6 +24,8 @@ module.exports = {
       if (formData.b) searchTerm += 'b'
       if (formData.r) searchTerm += 'r'
       if (formData.g) searchTerm += 'g'
+    } else if (formData.color) {
+      searchTerm += ` c:${formData.color}`
     }
 
     return searchTerm
@@ -41,30 +48,35 @@ module.exports = {
 
     if (colors.includes('W')) {
       result.push({
+        type: 'color',
         name: 'White',
         searchTerm: 'w',
       })
     }
     if (colors.includes('U')) {
       result.push({
+        type: 'color',
         name: 'Blue',
         searchTerm: 'u',
       })
     }
     if (colors.includes('B')) {
       result.push({
+        type: 'color',
         name: 'Black',
         searchTerm: 'b',
       })
     }
     if (colors.includes('R')) {
       result.push({
+        type: 'color',
         name: 'Red',
         searchTerm: 'r',
       })
     }
     if (colors.includes('G')) {
       result.push({
+        type: 'color',
         name: 'Green',
         searchTerm: 'g',
       })
@@ -76,6 +88,7 @@ module.exports = {
       .filter('-')
       .map((type) => {
         return {
+          type: 'type',
           name: type,
           searchTerm: type,
         }
@@ -98,30 +111,35 @@ const colorParse = (colors) => {
 
   if (colors.includes('W')) {
     result.push({
+      type: 'color',
       name: 'White',
       searchTerm: 'w',
     })
   }
   if (colors.includes('U')) {
     result.push({
+      type: 'color',
       name: 'Blue',
       searchTerm: 'u',
     })
   }
   if (colors.includes('B')) {
     result.push({
+      type: 'color',
       name: 'Black',
       searchTerm: 'b',
     })
   }
   if (colors.includes('R')) {
     result.push({
+      type: 'color',
       name: 'Red',
       searchTerm: 'r',
     })
   }
   if (colors.includes('G')) {
     result.push({
+      type: 'color',
       name: 'Green',
       searchTerm: 'g',
     })
@@ -137,8 +155,9 @@ const typeParse = (types) => {
     .filter((element) => element !== emdash)
     .map((type) => {
       return {
+        type: 'type',
         name: type,
-        searchTerm: type,
+        searchTerm: ` ${type}`,
       }
     })
 }
@@ -157,6 +176,7 @@ const textParse = (tags, text) => {
 const keywordParse = (keywords) => {
   return keywords.map((keyword) => {
     return {
+      type: 'text',
       name: keyword,
       searchTerm: keyword,
     }
