@@ -30,7 +30,6 @@ router.get('/cards', async (req, res) => {
     console.log(err)
     // return error template
   }
-  console.log(searchTerm)
   // detect if next page
 
   res.send(layout(cardsTemplate(data)))
