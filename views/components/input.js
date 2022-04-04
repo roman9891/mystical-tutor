@@ -2,7 +2,7 @@ module.exports = {
   textInput: (name, label, placeholder) => {
     return `
             <div class="field">
-                <label class="label">${label}</label>
+                ${label ? `<label class="label">${label}</label>` : ''}
                 <div class="control">
                     <input class="input" type="text" name="${name}" placeholder="${placeholder}">
                 </div>
@@ -17,7 +17,7 @@ module.exports = {
 
     return `
         <div class="field">
-            <label class="label">${label}</label>
+            ${label ? `<label class="label">${label}</label>` : ''}
             <div class="control">
                 <div class="select">
                     <select name="${name}">

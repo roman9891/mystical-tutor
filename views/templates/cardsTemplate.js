@@ -1,19 +1,10 @@
+const blockImage = require('../components/blockImage')
+const column = require('../components/column')
+const columns = require('../components/columns')
+
 module.exports = (data) => {
   const cards = data.data
-  const renderCards = (cards) => {
-    return cards
-      .map(
-        (card) =>
-          `<a href="/cards/${card.id}"><img src ="${
-            card.image_uris?.small || card.card_faces[0].image_uris.small
-          }"/></a>`
-      )
-      .join('')
-  }
+  const next = data.has_more
 
-  return `
-        <div id="cards-div">
-            ${renderCards(cards)}
-        </div>
-    `
+  return columns(cards, 4, column)
 }

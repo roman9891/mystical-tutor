@@ -4,14 +4,17 @@ const express = require('express')
 const { getCards, getCard } = require('../scryfallAPI')
 const { queryAssembler } = require('../utils')
 const layout = require('../views/layout')
+const cardDFCTemplate = require('../views/templates/cardDFCTemplate')
 const cardsTemplate = require('../views/templates/cardsTemplate')
 const cardTemplate = require('../views/templates/cardTemplate')
+const errorTemplate = require('../views/templates/errorTemplate')
+const homeTemplate = require('../views/templates/homeTemplate')
 const searchTemplate = require('../views/templates/searchTemplate')
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  res.send(layout('HOMEPAGE'))
+  res.send(layout(homeTemplate()))
 })
 
 router.get('/search', (req, res) => {
@@ -26,9 +29,8 @@ router.get('/cards', async (req, res) => {
   try {
     data = await getCards(searchTerm)
   } catch (err) {
-    data = {}
     console.log(err)
-    // return error template
+    return res.send(layout(errorTemplate(err.message)))
   }
   // detect if next page
 
@@ -46,12 +48,13 @@ router.get('/cards/:id', async (req, res) => {
   try {
     data = await getCard(id)
   } catch (err) {
-    data = {}
     console.log(err)
-    // return error template
+    return res.send(layout(errorTemplate(err.message)))
   }
 
-  res.send(layout(cardTemplate(data)))
+  if (data.card_faces) {
+    return res.send(layout(cardDFCTemplate(data)))
+  } else res.send(layout(cardTemplate(data)))
 })
 
 router.get('/docs', (req, res) => {
