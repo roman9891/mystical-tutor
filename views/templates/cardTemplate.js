@@ -1,12 +1,10 @@
 const { tagParse, render } = require('../../utils')
 const storedTags = require('../../tag')
 const tagButton = require('../components/tagButton')
-const form = require('../components/form')
 
 module.exports = (card) => {
   const image = card.image_uris?.normal || card.card_faces[0].image_uris.normal
   const { colors, keywords, types, text } = tagParse(storedTags, card)
-  const inputs = []
 
   return `
     <div class="columns box">
@@ -29,12 +27,11 @@ module.exports = (card) => {
                 <div>${render(text, tagButton)}</div>
                 <label class="label has-text-white">SPACE</label>
                 <form id="tag-form" action="/cards">
-                <input hidden name="color" type="text">
-                <input hidden name="type" type="text">
-                <input hidden name="text" type="text">
-                <input hidden name="set" type="text">
-                <button class="button is-danger">Submit</button>
-                </div>                
+                    <input hidden name="color" type="text">
+                    <input hidden name="type" type="text">
+                    <input hidden name="text" type="text">
+                    <input hidden name="set" type="text">
+                    <button class="button is-danger">Submit</button>     
                 </form>
             </div>
         </div>

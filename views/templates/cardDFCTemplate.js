@@ -34,14 +34,13 @@ module.exports = (card) => {
                 <label class="label">Text:</label>
                 <div>${render(text, tagButton)}</div>
                 <label class="label has-text-white">SPACE</label>
-                <form id="tag-form" action="/cards">
-                <input hidden name="color" type="text">
-                <input hidden name="type" type="text">
-                <input hidden name="text" type="text">
-                <input hidden name="set" type="text">
-                <button class="button is-danger">Submit</button>
-                </div>                
-                </form>
+                    <form id="tag-form" action="/cards">
+                    <input hidden name="color" type="text">
+                    <input hidden name="type" type="text">
+                    <input hidden name="text" type="text">
+                    <input hidden name="set" type="text">
+                    <button class="button is-danger">Submit</button>           
+                    </form>
             </div>
         </div>
         <script src="/cardTemplateScript.js"></script>

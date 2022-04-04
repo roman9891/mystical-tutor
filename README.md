@@ -11,6 +11,7 @@ TODO:
   - background image for homepage
 - DFC templating
   - tags are doubled up between faces
+- Pagination
 - error handling
 - tests
   - test utils
