@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon index.js"
   },
   "repository": {
@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/roman9891/mystical-tutor/issues"
   },
-  "homepage": "https://github.com/roman9891/mystical-tutor#readme"
+  "homepage": "https://github.com/roman9891/mystical-tutor#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
 }

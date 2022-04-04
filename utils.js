@@ -32,7 +32,7 @@ module.exports = {
       searchTerm += ` c:${formData.color}`
     }
     console.log({ formData, searchTerm })
-    return searchTerm
+    return searchTerm.trim()
   },
   tagParse: (tags, card) => {
     const cardColors = card.colors
