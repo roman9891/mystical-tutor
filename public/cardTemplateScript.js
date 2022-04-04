@@ -10,6 +10,8 @@ buttons.forEach((button) =>
     const input = form.querySelector(query)
 
     input.value += searchTerm
+    input.value = input.value.trim()
+
     button.classList.add('is-active')
     button.classList.add('is-primary')
   })

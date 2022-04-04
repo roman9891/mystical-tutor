@@ -1,3 +1,8 @@
+const navbar = require('./components/navbar')
+
+const brandIcon =
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2nw9e8HEYwBM18_Y_kNoM_CZtogqslCP-Mg&usqp=CAU'
+
 module.exports = (content) => {
   return `
         <!DOCTYPE html>
@@ -9,44 +14,12 @@ module.exports = (content) => {
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"></link>
             </head>
             <body>
-                <nav class="navbar" role="navigation" aria-label="main navigation">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="/">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2nw9e8HEYwBM18_Y_kNoM_CZtogqslCP-Mg&usqp=CAU" width="28" height="28">
-                        </a>
-                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                            <span aria-hidden="true">test</span>
-                            <span aria-hidden="true">test</span>
-                            <span aria-hidden="true">test</span>
-                        </a>
-                    </div>
-                
-                    <div id="navbarBasicExample" class="navbar-menu">
-                        <div class="navbar-start">
-                            <a class="navbar-item" href="/search">
-                                Search
-                            </a>
-                    
-                            <a class="navbar-item" href="/docs">
-                                Documentation
-                            </a>
-                    
-                            <a class="navbar-item" href="/about">
-                                About
-                            </a>
-                        </div>
-                    </div>
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <form method="post" action="/search">
-                                <input type="text">
-                                <button>Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                    </div>
-                </nav>
-                ${content}    
+                ${navbar(brandIcon)}
+                <div class="has-text-white">SPACE</div>
+                <div class="columns is-centered">
+                    <div class="column is-two-thirds">${content}</div>    
+                </div>   
+                <script src="/navbarScript.js"></script>
             </body>
         </html>
     `

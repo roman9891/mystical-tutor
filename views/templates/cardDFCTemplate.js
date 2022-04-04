@@ -1,23 +1,29 @@
-const { tagParse, render } = require('../../utils')
+const { render, tagParseDFC } = require('../../utils')
 const storedTags = require('../../tag')
 const tagButton = require('../components/tagButton')
-const form = require('../components/form')
 
 module.exports = (card) => {
-  const image = card.image_uris?.normal || card.card_faces[0].image_uris.normal
-  const { colors, keywords, types, text } = tagParse(storedTags, card)
-  const inputs = []
+  const card1 = card.card_faces[0]
+  const card2 = card.card_faces[1]
+  const image1 = card1.image_uris?.normal
+  const image2 = card2.image_uris?.normal
+  const { colors, keywords, types, text } = tagParseDFC(storedTags, card)
 
   return `
-    <div class="columns box">
-        <div class="column">
-            <span>
-                <img src="${image}"/>
-            </span>
-        </div>
-        <div class="column">
+        <div class="columns box">
+            <div class="column">
+                <span>
+                    <img src="${image1}"/>
+                </span>
+            </div>
+            <div class="column">
+                <span>
+                    <img src="${image2}"/>
+                </span>
+            </div>
+            <div class="column">
             <div id="tag-container" class="box">
-                <label class="label is-size-3">Related Search Tags</label>
+                <label class="label is-size-4">Related Search Tags</label>
                 <div class="block">
                 <label class="label">Color:</label>
                 <div>${render(colors, tagButton)}</div>
@@ -38,8 +44,6 @@ module.exports = (card) => {
                 </form>
             </div>
         </div>
-    </div> 
-    <script src="/cardTemplateScript.js"></script>
-        
+        <script src="/cardTemplateScript.js"></script>
     `
 }
