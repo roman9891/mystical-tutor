@@ -1,8 +1,7 @@
 {
   "dependencies": {
     "axios": "^0.26.1",
-    "express": "^4.17.3",
-    "nodemon": "^2.0.15"
+    "express": "^4.17.3"
   },
   "name": "mystical-tutor",
   "description": "Search up your favorite magic cards and discover synergies by following up with related searches",
@@ -25,6 +24,7 @@
   },
   "homepage": "https://github.com/roman9891/mystical-tutor#readme",
   "devDependencies": {
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15"
   }
 }
