@@ -11,6 +11,12 @@ module.exports = {
       words.forEach((word) => (searchTerm += ` t:${word}`))
     }
     if (formData.text) {
+      // const reg = formData.text.split('/')
+
+      // reg.forEach((term) => {
+      //   searchTerm += ' o:/' + term + '/'
+      // })
+      // console.log(searchTerm)
       const words = formData.text.split(' ')
       words.forEach((word) => {
         if (word === 'or') searchTerm += ' or'
