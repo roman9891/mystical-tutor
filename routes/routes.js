@@ -4,9 +4,11 @@ const express = require('express')
 const { getCards, getCard } = require('../scryfallAPI')
 const { queryAssembler } = require('../utils')
 const layout = require('../views/layout')
+const aboutTemplate = require('../views/templates/aboutTemplate')
 const cardDFCTemplate = require('../views/templates/cardDFCTemplate')
 const cardsTemplate = require('../views/templates/cardsTemplate')
 const cardTemplate = require('../views/templates/cardTemplate')
+const docTemplate = require('../views/templates/docTemplate')
 const errorTemplate = require('../views/templates/errorTemplate')
 const homeTemplate = require('../views/templates/homeTemplate')
 const searchTemplate = require('../views/templates/searchTemplate')
@@ -58,11 +60,11 @@ router.get('/cards/:id', async (req, res) => {
 })
 
 router.get('/docs', (req, res) => {
-  res.send(layout('DOCS'))
+  res.send(layout(docTemplate()))
 })
 
 router.get('/about', (req, res) => {
-  res.send(layout('ABOUT'))
+  res.send(layout(aboutTemplate()))
 })
 
 module.exports = router

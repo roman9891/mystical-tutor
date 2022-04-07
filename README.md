@@ -12,7 +12,6 @@ TODO:
 - DFC templating
   - tags are doubled up between faces
 - Pagination
-- error handling
-- tests
-  - test utils
 - adding tags forever...
+  - change all text tags to use reg in search term
+  - add clear button to tag submission
