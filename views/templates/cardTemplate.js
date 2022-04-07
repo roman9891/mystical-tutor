@@ -30,6 +30,7 @@ module.exports = (card) => {
                     <input hidden name="color" type="text">
                     <input hidden name="type" type="text">
                     <input hidden name="text" type="text">
+                    <input hidden name="regex" type="text">
                     <input hidden name="set" type="text">
                     <button class="button is-danger">Submit</button>     
                 </form>

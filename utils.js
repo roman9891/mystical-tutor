@@ -11,18 +11,20 @@ module.exports = {
       words.forEach((word) => (searchTerm += ` t:${word}`))
     }
     if (formData.text) {
-      // const reg = formData.text.split('/')
-
-      // reg.forEach((term) => {
-      //   searchTerm += ' o:/' + term + '/'
-      // })
-      // console.log(searchTerm)
       const words = formData.text.split(' ')
       words.forEach((word) => {
         if (word === 'or') searchTerm += ' or'
         else if (word[0] === '-') searchTerm += ` -o:${word.slice(1)}`
         else searchTerm += ` o:${word}`
       })
+    }
+    if (formData.regex) {
+      const expressions = formData.regex.split('/').filter((ele) => ele)
+
+      expressions.forEach((expression) => {
+        searchTerm += ' o:/' + expression + '/'
+      })
+      console.log(searchTerm)
     }
     if (formData.set) searchTerm += ` e:${formData.set}`
     if (formData.rarity) searchTerm += ` r:${formData.rarity}`
